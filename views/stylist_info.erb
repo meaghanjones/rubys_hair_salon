@@ -1,0 +1,31 @@
+<h1><%= @stylist.name() %></h1>
+<p><a href="/stylists/<%= @stylist.id() %>/edit">Edit <%= @stylist.name() %>'s listing</a></p>
+
+<% if @stylist.clients().any?() %>
+  <h3>Here are all the clients for this stylist:</h3>
+
+  <ul>
+    <% @stylist.clients().each() do |client| %>
+      <li><%= client.name() %></li>
+    <% end %>
+  </ul>
+
+<% else %>
+  <p>There are no clients yet!</p>
+<% end %>
+
+<h3>Add a client to <%= @stylist.name() %> </h3>
+
+<form action="/clients" method="post">
+  <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
+
+  <label for="client_name">Client's name</label>
+  <input id="client_name" name="client_name" type="text">
+
+  <button type="submit">Add Client</button>
+</form>
+
+
+<div class ="container">
+<button class ="btn btn-success"><a href="/">Return to Main Page</a></button>
+</div>

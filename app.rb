@@ -26,3 +26,22 @@ delete("/stylist") do
   @stylist = stylist.all()
   erb(:success)
 end
+
+get("/stylists/:id") do
+  @stylist = Stylist.find(params.fetch("id").to_i())
+  erb(:stylist_info)
+end
+
+post("/clients") do
+  name = params.fetch("client_name")
+  stylist_id = params.fetch("stylist_id").to_i()
+  @stylist = Stylist.find(stylist_id)
+  @client = Client.new({:name => name, :stylist_id => stylist_id})
+  @client.save()
+  erb(:stylist_info)
+end
+
+get("/stylists/:id/edit") do
+  @stylist = Stylist.find(params.fetch("id").to_i())
+  erb(:stylist_edit)
+end
