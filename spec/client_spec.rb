@@ -60,7 +60,7 @@ describe(Client) do
   end
 
   describe("#update") do
-    it "lets you update clients in the database" do
+    it "lets the user update clients in the database" do
       client = Client.new({:name => "Sonja", :id => nil})
       client.save()
       client.update({:name => "Andrea"})
