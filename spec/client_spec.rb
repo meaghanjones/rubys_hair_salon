@@ -23,7 +23,7 @@ describe(Client) do
   end
 
   describe("#save") do
-    it "lets you save clients to the database" do
+    it "lets the user save clients to the database" do
       client = Client.new({:name => "Sonja", :id => nil})
       client.save()
       expect(Client.all()).to(eq([client]))
@@ -49,7 +49,7 @@ describe(Client) do
   end
 
   describe("#delete") do
-    it "lets you delete a client from the database" do
+    it "lets the user delete a client from the database" do
       client = Client.new({:name => "Miruna", :id => nil})
       client.save()
       client2 = Client.new({:name => "Anna", :id => nil})
@@ -58,14 +58,14 @@ describe(Client) do
       expect(Client.all()).to(eq([client2]))
     end
   end
-  
-  # describe("#update") do
-  #   it "lets you update clients in the database" do
-  #     client = Client.new({:name => "Sonja", :id => nil})
-  #     client.save()
-  #     client.update({:name => "Andrea"})
-  #     expect(client.name()).to(eq("Andrea"))
-  #   end
-  # end
+
+  describe("#update") do
+    it "lets you update clients in the database" do
+      client = Client.new({:name => "Sonja", :id => nil})
+      client.save()
+      client.update({:name => "Andrea"})
+      expect(client.name()).to(eq("Andrea"))
+    end
+  end
 
 end
