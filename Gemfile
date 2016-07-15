@@ -1,0 +1,11 @@
+source('https://rubygems.org')
+
+gem('rspec')
+gem('sinatra')
+gem('sinatra-contrib')
+gem('pry')
+gem('capybara')
+gem('guard')
+gem('guard-rspec')
+gem('launchy')
+gem('pg')
