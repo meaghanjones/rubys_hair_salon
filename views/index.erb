@@ -5,7 +5,7 @@
   <div class="col-md-6">
     <h2>Ruby's Stylists</h2>
     <% if @stylists.any?() %>
-      <p>Click on a stylist to see their client list</p>
+      <p>Click on a stylist to see their client list:</p>
     <ul>
       <% @stylists.each do |stylist| %>
       <li><a href="/stylists/<%=stylist.id()%>"><%= stylist.name() %></a></li>
@@ -14,8 +14,6 @@
     <% else %>
     <p>There are no salon listings yet!</p>
     <% end %>
-
-    <p>Add a New Stylist</p>
 
     <form action="/stylists" method="post">
       <label for="stylist_name">Add New Stylist:</label>
