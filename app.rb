@@ -20,16 +20,28 @@ post("/stylists") do
   erb(:success)
 end
 
-delete("/stylist") do
-  @stylist = Stylist.find(params.fetch("id").to_i())
-  @stylist.delete()
-  @stylist = stylist.all()
-  erb(:success)
-end
-
 get("/stylists/:id") do
   @stylist = Stylist.find(params.fetch("id").to_i())
   erb(:stylist_info)
+end
+
+delete("/stylist") do
+  @stylist = Stylist.find(params.fetch("stylist_id").to_i())
+  @stylist.delete()
+  @stylist = Stylist.all()
+  erb(:stylist_delete_success)
+end
+
+patch("/clients/:id") do
+  name = params.fetch("client_name")
+  @client = Client.find(params.fetch("id").to_i())
+  @client.update({:name => name})
+  erb(:client_info)
+end
+
+get("/clients/:id/edit") do
+  @stylist = Stylist.find(params.fetch("id").to_i())
+  erb(:client_edit)
 end
 
 post("/clients") do
