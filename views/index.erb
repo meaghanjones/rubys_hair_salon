@@ -1,0 +1,39 @@
+<h1>Ruby's Hair Salon</h1>
+
+
+<div class="row">
+  <div class="col-md-6">
+    <h2>Ruby's Stylists</h2>
+    <% if @stylists.any?() %>
+      <p>Click on a stylist to see their client list</p>
+    <ul>
+      <% @stylists.each do |stylist| %>
+      <li><a href="/stylists/<%=stylist.id()%>"><%= stylist.name() %></a></li>
+      <% end %>
+    </ul>
+    <% else %>
+    <p>There are no salon listings yet!</p>
+    <% end %>
+
+    <p>Add a New Stylist</p>
+
+    <form action="/stylists" method="post">
+      <label for="stylist_name">Add New Stylist:</label>
+      <input type="text" name="stylist_name" id="stylist_name" required>
+
+      <button class="btn btn-success" type="submit">Add Stylist</button>
+    </form>
+
+    <h2>Delete Stylists</h2>
+
+    <form action="/stylist" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <label for="stylist_id">Select a Stylist</label>
+      <select id='stylist_id' name='stylist_id' type='text' required>
+        <% @stylists.each() do |stylist| %>
+          <option value="<%= stylist.id()%>"> <%= stylist.name() %> </option>
+        <% end %>
+      </select>
+      <button class="btn btn-success" type="submit" name="button">Delete Stylist</button>
+    </form>
+  </div>
