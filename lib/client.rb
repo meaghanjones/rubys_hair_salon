@@ -36,4 +36,8 @@ class Client
     found_client
   end
 
+  define_method(:delete) do
+    DB.exec("DELETE FROM clients WHERE id = #{self.id()}")
+  end
+
 end
