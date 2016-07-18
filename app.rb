@@ -9,7 +9,6 @@ DB = PG.connect({:dbname => "hair_salon_test"})
 
 get("/") do
   @stylists = Stylist.all()
-  @clients = Client.all()
   erb(:index)
 end
 
@@ -17,12 +16,13 @@ post("/stylists") do
   name = params.fetch("stylist_name")
   stylist = Stylist.new({:name => name, :id => nil})
   stylist.save()
-  erb(:success)
+  @stylists = Stylist.all()
+  erb(:index)
 end
 
 get("/stylists/:id") do
   @stylist = Stylist.find(params.fetch("id").to_i())
-  erb(:stylist_info)
+  erb(:stylist)
 end
 
 delete("/stylist") do
@@ -30,27 +30,6 @@ delete("/stylist") do
   @stylist.delete()
   @stylist = Stylist.all()
   erb(:stylist_delete_success)
-end
-
-patch("/clients/:id") do
-  name = params.fetch("client_name")
-  @client = Client.find(params.fetch("id").to_i())
-  @client.update({:name => name})
-  erb(:client_info)
-end
-
-get("/clients/:id/edit") do
-  @stylist = Stylist.find(params.fetch("id").to_i())
-  erb(:client_edit)
-end
-
-post("/clients") do
-  name = params.fetch("client_name")
-  stylist_id = params.fetch("stylist_id").to_i()
-  @stylist = Stylist.find(stylist_id)
-  @client = Client.new({:name => name, :stylist_id => stylist_id})
-  @client.save()
-  erb(:stylist_info)
 end
 
 get("/stylists/:id/edit") do
@@ -62,5 +41,34 @@ patch("/stylists/:id")do
   name = params.fetch("stylist_name")
   @stylist = Stylist.find(params.fetch("id").to_i())
   @stylist.update({:name => name})
-  erb(:stylist_info)
+  erb(:stylist)
+end
+
+post("/clients") do
+  name = params.fetch("client_name")
+  stylist_id = params.fetch("stylist_id").to_i()
+  client = Client.new({:name => name, :stylist_id => stylist_id})
+  client.save()
+  @stylist = Stylist.find(stylist_id)
+  @client = Client.find(stylist_id)
+  erb(:stylist)
+end
+
+patch("/clients/:id") do
+  name = params.fetch("client_name")
+  @client = Client.find(params.fetch("id").to_i())
+  @client.update({:name => name})
+  erb(:client_info)
+end
+
+
+get("/clients/:id/edit") do
+  @stylist = Stylist.find(params.fetch("id").to_i())
+  erb(:client_edit)
+end
+
+
+get("/stylists/:id/edit") do
+  @stylist = Stylist.find(params.fetch("id").to_i())
+  erb(:stylist_edit)
 end
