@@ -1,5 +1,5 @@
 <h1><%= @stylist.name() %></h1>
-<p><a href="/stylists/<%= @stylist.id() %>/edit">Edit <%= @stylist.name() %> name</a></p>
+<p><a href="/stylists/<%= @stylist.id() %>/edit">Edit <%= @stylist.name() %>'s' name</a></p>
 
 <% if @stylist.clients().any?() %>
   <h3>Here are all the clients for this stylist:</h3>
@@ -25,7 +25,18 @@
   <button type="submit">Add Client</button>
 </form>
 
+<h2>Remove clients</h2>
 
-<div class ="container">
+    <form action="/client" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <label for="remove_client_id">Select a Client</label>
+      <select id='remove_client_id' name='remove_client_id' type='text' required>
+        <% @clients.each() do |client| %>
+          <option value="<%= client.id()%>"> <%= client.name() %> </option>
+        <% end %>
+      </select>
+      <button class="btn btn-success" type="submit" name="button">Delete Client</button>
+    </form>
+<div class ="container"><br>
 <button class ="btn btn-success"><a href="/">Return to Main Page</a></button>
 </div>
