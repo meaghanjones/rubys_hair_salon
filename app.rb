@@ -66,7 +66,7 @@ patch("/clients/:id") do
   name = params.fetch("client_name")
   @client = Client.find(params.fetch("id").to_i())
   @client.update({:name => name})
-  erb(:index)
+  erb(:success)
 end
 
 delete("/client") do
