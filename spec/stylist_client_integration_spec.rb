@@ -4,7 +4,7 @@ require('./app')
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
-describe('adding a new salon', {:type => :feature}) do
+describe('adding a stylist', {:type => :feature}) do
   it "allows a user to add a new stylist to the list" do
     visit('/')
     fill_in('stylist_name', :with => 'Ruby')
@@ -13,7 +13,7 @@ describe('adding a new salon', {:type => :feature}) do
   end
 end
 
-  describe('deleting a new salon', {:type => :feature}) do
+  describe('deleting a stylist', {:type => :feature}) do
     it "allows a user to delete a stylist on the list" do
     stylist = Stylist.new({:name => "Meaghan", :id => nil})
     stylist.save()
@@ -25,3 +25,22 @@ end
     expect(page).to have_content(stylist2.name())
   end
 end
+
+  describe('editing a stylist', {:type => :feature}) do
+
+  end
+end
+
+
+
+  describe('adding a new client', {:type => :feature}) do
+  end
+end
+
+  describe('deleting a client', {:type => :feature}) do
+  end
+end
+
+  describe('editing a client', {:type => :feature}) do
+  end
+end 
