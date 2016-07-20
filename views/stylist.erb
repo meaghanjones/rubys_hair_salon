@@ -6,7 +6,7 @@
 
   <ul>
     <% @stylist.clients().each() do |client| %>
-      <li><a href="/clients/<%= @client.id() %>/edit"><%= client.name() %></li></a>
+      <li><a href="/clients/<%= client.id() %>"><%= client.name() %></li></a>
     <% end %>
   </ul>
 
