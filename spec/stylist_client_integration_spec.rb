@@ -11,9 +11,10 @@ describe('adding a new salon', {:type => :feature}) do
     click_button('Add Stylist')
     expect(page).to have_content('Success')
   end
+end
 
   describe('deleting a new salon', {:type => :feature}) do
-    it "allows a user to delete a stylist on the list"
+    it "allows a user to delete a stylist on the list" do
     stylist = Stylist.new({:name => "Meaghan", :id => nil})
     stylist.save()
     stylist2 = Stylist.new({:name => "Edu", :id => nil})
@@ -23,6 +24,4 @@ describe('adding a new salon', {:type => :feature}) do
     click_link('Return Home')
     expect(page).to have_content(stylist2.name())
   end
-
-
 end
