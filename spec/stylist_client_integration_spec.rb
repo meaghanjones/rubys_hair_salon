@@ -9,38 +9,19 @@ describe('adding a stylist', {:type => :feature}) do
     visit('/')
     fill_in('stylist_name', :with => 'Ruby')
     click_button('Add Stylist')
-    expect(page).to have_content('Success')
+    expect(page).to have_content('Ruby')
   end
 end
 
   describe('deleting a stylist', {:type => :feature}) do
     it "allows a user to delete a stylist on the list" do
-    stylist = Stylist.new({:name => "Meaghan", :id => nil})
-    stylist.save()
-    stylist2 = Stylist.new({:name => "Edu", :id => nil})
-    stylist2.save()
-    visit('/')
-    click_button('Delete Stylist')
-    click_link('Return Home')
-    expect(page).to have_content(stylist2.name())
+      stylist = Stylist.new({:name => "Meaghan", :id => nil})
+      stylist.save()
+      stylist2 = Stylist.new({:name => "Edu", :id => nil})
+      stylist2.save()
+      visit('/')
+      click_button('Delete Stylist')
+      click_link('Return Home')
+      expect(page).to have_content(stylist2.name())
   end
 end
-
-  describe('editing a stylist', {:type => :feature}) do
-
-  end
-end
-
-
-
-  describe('adding a new client', {:type => :feature}) do
-    end
-  end
-
-  describe('deleting a client', {:type => :feature}) do
-    end
-  end
-
-  describe('editing a client', {:type => :feature}) do
-    end
-  end

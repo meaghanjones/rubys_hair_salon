@@ -1,5 +1,5 @@
 <h1><%= @stylist.name() %></h1>
-<p><a href="/stylists/<%= @stylist.id() %>/edit">Edit <%= @stylist.name() %>'s' name</a></p>
+<p><a href="/stylists/<%= @stylist.id() %>/edit">Edit <%= @stylist.name() %>'s name</a></p>
 
 <% if @stylist.clients().any?() %>
   <h3>Here are all the clients for this stylist:</h3>
