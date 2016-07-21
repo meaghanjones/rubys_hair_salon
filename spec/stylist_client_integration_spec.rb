@@ -34,13 +34,13 @@ end
 
 
   describe('adding a new client', {:type => :feature}) do
+    end
   end
-end
 
   describe('deleting a client', {:type => :feature}) do
+    end
   end
-end
 
   describe('editing a client', {:type => :feature}) do
+    end
   end
-end 
