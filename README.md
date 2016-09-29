@@ -1,4 +1,8 @@
-and delete stylists and also add, edit and delete clients specific to each stylist.
+## Ruby's Hair Salon
+
+## Description 
+
+A user can add edit and delete stylists and also add, edit and delete clients specific to each stylist.
 
 
 ## Technologies used
